@@ -1,0 +1,122 @@
+<!--View Information-->
+<!--View name : Contract Detail-->
+<!--Controller name : contractDetailCtrl-->
+<!--Controller path : www/templates/application-storage/sqLite/js/controllers.js-->
+<!--State name : app.contractdetail-->
+<!--URL : #app/contractdetail-->
+<style>
+
+.md-datepicker-button {
+  display: none;
+}
+.md-icon-button+.md-datepicker-input-container
+{
+	margin-left:0px;
+}
+.md-input-container
+{
+	margin-top:0px;
+}
+</style>
+<ion-view title="Create Loan">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="navigateTo('app.menuDashboard')" class="button back-button buttons  button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons> <!--end left button on navigation bar-->
+
+    <!--contract detail section-->
+    <form name="contractForm">
+        <ion-content id="contract-details-content">
+              <div  class="md-block">
+                <md-autocomplete  flex required
+                    md-input-id="borrowername"
+                    md-input-name="borrowername"
+                    md-input-minlength="2"
+                    md-input-maxlength="15"
+                    md-selected-item="borrowerInfo.selectedItem"
+                    md-search-text="borrowerInfo.searchText"
+                    md-items="item in queryBorrowerSearch(borrowerInfo.searchText)"
+                    md-item-text="item.display"
+                    md-floating-label="Borrower Name"
+                    md-selected-item-change = "borrowerInfo.selectedBorrower(item)"
+                    md-menu-class="autocomplete-custom-template">
+                <md-item-template>
+                    <span md-highlight-text="borrowerInfo.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                </md-item-template>
+                 <md-not-found>
+                    No states matching "{{borrowerInfo.searchText}}" were found.
+                </md-not-found>
+          
+                </md-autocomplete>
+             </div>
+           <md-input-container class="md-block">
+                <label>Loan Amount</label>
+                <input ng-model="loanInfo.loan.loanamount" name="loanamount" required>
+               
+            </md-input-container>
+           
+            <md-input-container class="md-block">
+                <label>Interest Rate</label>
+                <input ng-model="loanInfo.loan.interestrate" name="interestrate" required>
+            </md-input-container>
+             <md-input-container class="md-block">
+                <label>Tenure in Months</label>
+                <input ng-model="loanInfo.loan.tenure" name="tenure" required>
+            </md-input-container>
+             <md-input-container class="md-block" style="display:none;">
+                <label>Frequency</label>
+                <md-select flex ng-model="loanInfo.loan.frequency" name="frequency" required>
+                    <md-option selected value="1">Monthly</md-option>
+                    <md-option value="2">Yearly</md-option>
+                </md-select>
+                 <!--<div ng-messages="contractForm.frequency.$error">
+                     <div ng-message="required">This is required.</div>
+                  </div>-->
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label style="left:0px;">Loan Sanctioned Date</label>
+
+                <md-datepicker name="sanctioneddate" ng-model="loanInfo.sanctioneddate" required></md-datepicker>
+            </md-input-container>
+
+            <!--end contract detail input section-->
+
+        </ion-content>
+        <div class="footer-fab-bar">
+            <a class="md-button md-accent md-fab fab-footer" ng-click="showListBottomSheet($event,contractForm)"
+               aria-label="Contract Form Actions">
+                <i class="ion-android-star"></i>
+            </a>
+        </div>
+    </form><!--end contract detail section-->
+
+    <!--angular template section-->
+    <script type="text/ng-template" id="contract-actions-template">
+        <md-bottom-sheet class="md-list md-has-header">
+            <h1 class="md-bottom-sheet-header">Actions</h1>
+            <md-list>
+                <!--md bottom sheet list item-->
+                <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-class="{ 'disabled-link': disableSaveBtn}"
+                       ng-click="saveLoan(loanInfo.loan,$event)">
+                        <i class="ion-android-list"></i>
+                        <span>Save Loan</span>
+                    </a>
+                </md-list-item>
+
+                <md-list-item ng-show="actionDelete">
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="deleteLn(loanInfo.loan,$event)">
+                        <i class="ion-android-delete"></i>
+                        <span>Remove Loan</span>
+                    </a>
+                </md-list-item>
+                <!--end md bottom sheet list item-->
+            </md-list>
+        </md-bottom-sheet>
+    </script><!--end angular template section-->
+
+</ion-view>

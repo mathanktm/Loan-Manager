@@ -1,0 +1,113 @@
+<!--View Information-->
+<!--View name : request new card page-->
+<!--Controller name : requestNewCardCtrl-->
+<!--Controller path : www/templates/cards/js/controllers.js-->
+<!--State name : app.requestNewCard-->
+<!--URL : #app/requestNewCard-->
+<ion-view title="Borrowers List">
+   <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="navigateTo('app.menuDashboard')" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons><!--end left button on navigation bar-->
+   <!--contract list section-->
+    <ion-content id="borrowers-list-content" class="">
+        <!--list section-->
+        <md-list>
+
+            <md-list-item>
+                <md-input-container md-no-float="" class="md-list-item-full-width">
+                    <input ng-model="filterText" placeholder="Search for borrowers.">
+                </md-input-container>
+               
+            </md-list-item>
+             <!--footer fab bar-->
+
+                 <div class="footer-fab-bar">
+                    <a class="md-button md-accent md-fab fab-footer" ng-click="navigateTo('app.borrowersdetail')" aria-label="Add">
+                        <i class="ion-android-create"></i>
+                    </a>
+
+                </div><!--end footer fab bar-->
+            
+   <md-divider></md-divider>
+    <div class="row title">
+             <div class="col-10 title">
+                    No 
+                </div>
+                <div class="col-25">
+                    Borrower
+                </div>
+                 <div class="col-30">
+                    Address 
+                </div>
+                 <div class="col-10" style="display:none;">
+                    E-Mail
+                </div>
+                 <div class="col-25">
+                    Mobile No
+                </div>
+                <div class="col-10">
+                    E/D
+                </div>
+                </div>
+                <md-divider></md-divider>
+            <!--Below code it will disable animation to better performance-->
+            <div ng-if="!isAnimated" class="row contract-list-item"
+                 ng-repeat="item in borrowerInfo.borrowersList  | filter: filterText | orderBy: 'borrowername'">
+                 <div class="col-10">
+                    {{ item.row.borrowerno }} 
+                </div>
+                <div class="col-25">
+                    {{ item.row.borrowername }} 
+                </div>
+                 <div class="col-30">
+                    {{ item.row.address }} 
+                </div>
+                 <div class="col-10" style="display:none;">
+                    {{ item.row.email }} 
+                </div>
+                 <div class="col-25">
+                    {{ item.row.mobileno }} 
+                </div>
+                <div class="col-10 status-button">
+                    <md-menu md-position-mode="target-right target" class="md-list-item-md-menu-right">
+                        <p ng-click="$mdOpenMenu()">
+                            <!--<md-icon md-menu-origin md-svg-icon="more"></md-icon>-->
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </p>
+                        <md-menu-content width="1">
+                            <md-menu-item>
+                                <a class="md-button md-default-theme" ng-click="navigateTo('app.borrowersdetail',item.row)">
+                                    <span class="menu-item-button">Edit</span>
+                                </a>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <a class="md-button md-default-theme" ng-click="deleteBor(item.row,$event)">
+                                    <span class="menu-item-button" >Delete</span>
+                                </a>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </div>
+            </div>
+            <md-divider></md-divider>
+            <!--Below code it will show animation when selecting row.-->
+            <md-list-item ng-if="isAnimated" class="md-list-item-default"
+                          ng-click="navigateTo('app.contractdetail',contract)"
+                          ng-repeat="item in borrowerInfo.borrowersList  | filter: filterText | orderBy: 'borrowername'">
+
+                <i class="fa fa-user"></i>
+
+                <p>{{ item.row.borrowername }}</p>
+               
+            </md-list-item>
+
+        </md-list>
+        <!--end list section-->
+        
+   
+
+    </ion-content><!--end contract list section-->
+</ion-view>

@@ -1,0 +1,75 @@
+<!--View Information-->
+<!--View name : Contract Detail-->
+<!--Controller name : contractDetailCtrl-->
+<!--Controller path : www/templates/application-storage/sqLite/js/controllers.js-->
+<!--State name : app.contractdetail-->
+<!--URL : #app/contractdetail-->
+<ion-view title="Borrower Details">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="navigateTo('app.borrowers')" class="button back-button buttons  button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons> <!--end left button on navigation bar-->
+
+    <!--contract detail section-->
+    <form name="contractForm">
+        <ion-content id="contract-details-content">
+            <!--contract detail input section-->
+            <!--<md-input-container md-no-float>
+                <input ng-model="borrowerInfo.borrower.borrowerno" name="borrowerno" placeholder="Borrower No *">
+            </md-input-container>-->
+            <md-input-container class="md-block">
+            <label>Borrower Name</label>
+                <input ng-model="borrowerInfo.borrower.borrowername" name="borrowername" required >
+            </md-input-container>
+           <md-input-container class="md-block">
+                <input ng-model="borrowerInfo.borrower.address" name="address" placeholder="Address">
+            </md-input-container>
+           
+            <md-input-container class="md-block">
+                <input ng-model="borrowerInfo.borrower.email" name="email" placeholder="Email">
+            </md-input-container>
+             <md-input-container class="md-block">
+                <input ng-model="borrowerInfo.borrower.mobileno" name="mobileno" required placeholder="Mobile"
+                       type="tel">
+            </md-input-container>
+            <!--end contract detail input section-->
+
+        </ion-content>
+        <div class="footer-fab-bar">
+            <a class="md-button md-accent md-fab fab-footer" ng-click="showListBottomSheet($event,contractForm)"
+               aria-label="Contract Form Actions">
+                <i class="ion-android-star"></i>
+            </a>
+        </div>
+    </form><!--end contract detail section-->
+
+    <!--angular template section-->
+    <script type="text/ng-template" id="contract-actions-template">
+        <md-bottom-sheet class="md-list md-has-header">
+            <h1 class="md-bottom-sheet-header">Actions</h1>
+            <md-list>
+                <!--md bottom sheet list item-->
+                <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-class="{ 'disabled-link': disableSaveBtn}"
+                       ng-click="saveBorrower(borrowerInfo.borrower,$event)">
+                        <i class="ion-android-list"></i>
+                        <span>Save Borrowers</span>
+                    </a>
+                </md-list-item>
+
+                <md-list-item ng-show="actionDelete">
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="deleteBor(borrowerInfo.borrower,$event)">
+                        <i class="ion-android-delete"></i>
+                        <span>Remove Contract</span>
+                    </a>
+                </md-list-item>
+                <!--end md bottom sheet list item-->
+            </md-list>
+        </md-bottom-sheet>
+    </script><!--end angular template section-->
+
+</ion-view>

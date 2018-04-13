@@ -1,0 +1,174 @@
+<!--View Information-->
+<!--View name : Contract Detail-->
+<!--Controller name : contractDetailCtrl-->
+<!--Controller path : www/templates/application-storage/sqLite/js/controllers.js-->
+<!--State name : app.contractdetail-->
+<!--URL : #app/contractdetail-->
+<ion-view title="Edit Loan Status">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="navigateTo('app.newloan')" class="button back-button buttons  button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons> <!--end left button on navigation bar-->
+
+    <!--contract detail section-->
+    <form name="contractForm">
+        <ion-content id="contract-details-content">
+            
+           <!--<div  class="md-block">
+                <md-autocomplete  flex required
+                    md-input-id="borrowername"
+                    md-input-name="borrowername"
+                    md-input-minlength="2"
+                    md-input-maxlength="15"
+                    md-selected-item="borrowerInfo.selectedItem"
+                    md-search-text="borrowerInfo.searchText"
+                    md-items="item in queryBorrowerSearch(borrowerInfo.searchText)"
+                    md-item-text="item.display"
+                    md-floating-label="Borrower Name"
+                    md-selected-item-change = "borrowerInfo.selectedBorrower(item)"
+                    md-menu-class="autocomplete-custom-template">
+                <md-item-template>
+                    <span md-highlight-text="borrowerInfo.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                </md-item-template>
+                 <md-not-found>
+                    No states matching "{{borrowerInfo.searchText}}" were found.
+                </md-not-found>
+          
+                </md-autocomplete>
+             </div>
+           <md-input-container class="md-block">
+                <label>Loan Amount</label>
+                <input ng-model="loanInfo.loan.loanamount" name="loanamount" required>
+               
+            </md-input-container>
+           
+            <md-input-container class="md-block">
+                <label>Interest Rate</label>
+                <input ng-model="loanInfo.loan.interestrate" name="interestrate" required>
+            </md-input-container>
+             <md-input-container class="md-block">
+                <label>Tenure in Months *</label>
+                <input ng-model="loanInfo.loan.tenure" name="tenure" required>
+            </md-input-container>
+             <md-input-container class="md-block">
+                <label>Frequency</label>
+                <md-select flex ng-model="loanInfo.loan.frequency" name="frequency" required>
+                    <md-option value="1">Monthly</md-option>
+                    <md-option value="2">Yearly</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Loan Sanctioned Date</label>
+
+                <md-datepicker name="sanctioneddate" ng-model="loanInfo.loan.sanctioneddate" required></md-datepicker>
+            </md-input-container>-->
+
+            <!--end contract detail input section-->
+
+            <!--lise section-->
+        <md-list id="device-information-content" class="">
+        <br />
+        <md-divider></md-divider>
+            <md-list-item class="row">
+                <div class="col-25 title">
+                    Borrower
+                </div>
+                <div class="col-25">
+                    :{{loanInfo.loan.borrowername}}
+                </div>
+                <div class="col-25 title">
+                    No
+                </div>
+                <div class="col-25">
+                    :{{loanInfo.loan.borrowerno}}
+                </div>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item class="row">
+                <div class="col-25 title">
+                    Loan
+                </div>
+                <div class="col-25">
+                    :{{loanInfo.loan.loanamount}}
+                </div>
+                 <div class="col-25 title">
+                    Interest
+                </div>
+                <div class="col-25">
+                    :{{loanInfo.loan.interestrate}}
+                </div>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item class="row">
+                <div class="col-25 title">
+                    Tenure
+                </div>
+                <div class="col-25">
+                     :{{loanInfo.loan.tenure}}
+                </div>
+                <div class="col-25 title">
+                    Loan Date
+                </div>
+                <div class="col-25">
+                     :{{loanInfo.loan.sanctioneddate}}
+                </div>
+
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item class="row">
+               
+                <div class="col-25 title">
+                    EMI Amount
+                </div>
+                <div class="col-25">
+                     :{{loanInfo.loan.installmentamount}}
+                </div>
+                <div class="col-25 title">
+                    Status
+                </div>
+                <div class="col-25">
+                    <md-select flex ng-model="loanInfo.loan.statusid" name="statusid" >
+                        <md-option value="O">Active</md-option>
+                        <md-option value="C">Closed</md-option>
+                        <md-option value="X">Cancelled</md-option>
+                        <md-option value="P">Pre Closed</md-option>
+                    </md-select>                  
+                     
+                </div>
+            </md-list-item>
+            <md-divider></md-divider>
+            
+        </md-list>
+        <!--end lise section-->
+        </ion-content>
+        <div class="footer-fab-bar">
+            <a class="md-button md-accent md-fab fab-footer" ng-click="showListBottomSheetForUpdate($event,contractForm)"
+               aria-label="Contract Form Actions">
+                <i class="ion-android-star"></i>
+            </a>
+        </div>
+    </form><!--end contract detail section-->
+
+    <!--angular template section-->
+    <script type="text/ng-template" id="contract-actions-template">
+        <md-bottom-sheet class="md-list md-has-header">
+            <h1 class="md-bottom-sheet-header">Actions</h1>
+            <md-list>
+                <!--md bottom sheet list item-->
+                <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-class="{ 'disabled-link': disableSaveBtn}"
+                       ng-click="saveLoan(loanInfo.loan,$event)">
+                        <i class="ion-android-list"></i>
+                        <span>Save Loan</span>
+                    </a>
+                </md-list-item>
+
+               
+            </md-list>
+        </md-bottom-sheet>
+    </script><!--end angular template section-->
+
+</ion-view>

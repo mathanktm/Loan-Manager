@@ -1,0 +1,87 @@
+<!--View Information-->
+<!--View name : Contract Detail-->
+<!--Controller name : contractDetailCtrl-->
+<!--Controller path : www/templates/application-storage/sqLite/js/controllers.js-->
+<!--State name : app.contractdetail-->
+<!--URL : #app/contractdetail-->
+<style>
+
+.md-datepicker-button {
+  display: none;
+}
+.md-icon-button+.md-datepicker-input-container
+{
+	margin-left:0px;
+}
+.md-input-container
+{
+	margin-top:0px;
+}
+</style>
+<ion-view title="Expense Details">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="navigateTo('app.expense')" class="button back-button buttons  button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons> <!--end left button on navigation bar-->
+
+    <!--contract detail section-->
+    <form name="contractForm">
+        <ion-content id="contract-details-content">
+            <!--contract detail input section-->
+            <md-input-container class="md-block">
+            <label>Expense</label>
+                <input ng-model="expenseInfo.expense.expense" name="expense" required >
+            </md-input-container>
+           <md-input-container class="md-block">
+                <input ng-model="expenseInfo.expense.amount" name="amount" placeholder="Amount" required>
+            </md-input-container>
+           
+            <md-input-container class="md-block">
+                <input ng-model="expenseInfo.expense.comment" name="comment" placeholder="Comment">
+            </md-input-container>
+             <md-input-container class="md-block">
+                <label style="left:0px;">Expense Date</label>
+                <md-datepicker name="expensedate" ng-model="expenseInfo.expensedate" ></md-datepicker>
+            </md-input-container>
+
+            <!--end contract detail input section-->
+
+        </ion-content>
+        <div class="footer-fab-bar">
+            <a class="md-button md-accent md-fab fab-footer" ng-click="showListBottomSheet($event,contractForm)"
+               aria-label="Contract Form Actions">
+                <i class="ion-android-star"></i>
+            </a>
+        </div>
+    </form><!--end contract detail section-->
+
+    <!--angular template section-->
+    <script type="text/ng-template" id="contract-actions-template">
+        <md-bottom-sheet class="md-list md-has-header">
+            <h1 class="md-bottom-sheet-header">Actions</h1>
+            <md-list>
+                <!--md bottom sheet list item-->
+                <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-class="{ 'disabled-link': disableSaveBtn}"
+                       ng-click="saveExpense(expenseInfo.expense,$event)">
+                        <i class="ion-android-list"></i>
+                        <span>Save Expense</span>
+                    </a>
+                </md-list-item>
+
+                <md-list-item ng-show="actionDelete">
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="deleteBor(expenseInfo.expense,$event)">
+                        <i class="ion-android-delete"></i>
+                        <span>Remove Expense</span>
+                    </a>
+                </md-list-item>
+                <!--end md bottom sheet list item-->
+            </md-list>
+        </md-bottom-sheet>
+    </script><!--end angular template section-->
+
+</ion-view>

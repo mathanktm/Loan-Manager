@@ -1,0 +1,116 @@
+<!--View Information-->
+<!--View name : request new card page-->
+<!--Controller name : requestNewCardCtrl-->
+<!--Controller path : www/templates/cards/js/controllers.js-->
+<!--State name : app.requestNewCard-->
+<!--URL : #app/requestNewCard-->
+<style>
+
+.md-datepicker-button {
+  display: none;
+}
+.md-icon-button+.md-datepicker-input-container
+{
+	margin-left:0px;
+}
+</style>
+<ion-view title="EMI List">
+   <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="navigateTo('app.menuDashboard')" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons><!--end left button on navigation bar-->
+   <!--contract list section-->
+    <ion-content id="borrowers-list-content" class="">
+        <!--list section-->
+        <div class="row">
+             <div class="col-15 title">
+                     <md-input-container md-no-float>
+                <label style="left:0px;width:100%;">Start Date</label>
+                <md-datepicker ng-model="emischeduleInfo.fromdate" name="fromdate" required ng-change="bindEMIList()"></md-datepicker>
+                </md-input-container>
+                </div>
+                <div class="col-15">
+                     
+                     <md-input-container md-no-float>
+                <label style="left:0px;width:100%;">End Date</label>
+                <md-datepicker ng-model="emischeduleInfo.todate" name="todate" required ng-change="bindEMIList()"></md-datepicker>
+                </md-input-container>
+
+                </div>
+
+                 <div class="col-15">
+                     
+                      <md-input-container md-no-float>
+                 <label>Payment Status</label>
+                    <md-select flex ng-model="emischeduleInfo.ispaid" name="ispaid" ng-change="bindEMIList()" style="width:100px;">
+                        <md-option value="0">No</md-option>
+                        <md-option value="1">Yes</md-option>
+                    </md-select>
+                </md-input-container>
+               
+
+                </div>
+               </div>
+               
+                  <md-divider></md-divider>
+             <div class="row">
+             <div class="col-20">
+                    Loan No 
+                </div>
+                <div class="col-20">
+                    Borrower
+                </div>
+                 <div class="col-10">
+                    No 
+                </div>
+                 <div class="col-20">
+                    Due Date
+                </div>
+                 <div class="col-20">
+                    Due Amount
+                </div>
+                 <div class="col-10">
+                    Paid
+                </div>
+               </div>
+               <md-divider></md-divider>
+            <!--Below code it will disable animation to better performance-->
+            <div ng-if="!isAnimated" class="row"
+                 ng-repeat="item in emischeduleInfo.emilist ">
+                 <div class="col-20">
+                    {{ item.loanacctno }} 
+                </div>
+                <div class="col-20">
+                    {{ item.borrowername }} 
+                </div>
+                 <div class="col-10">
+                    {{ item.installmentno }} 
+                </div>
+                 <div class="col-20">
+                    {{ item.emidate }} 
+                </div>
+                 <div class="col-20">
+                    {{ item.installmentamount }} 
+                </div>
+                <div class="col-10">
+                    {{ item.ispaid }} 
+                </div>
+
+            </div
+            
+
+        
+        <!--end list section-->
+        <md-divider></md-divider>
+    <!--footer fab bar-->
+    <!--<div class="footer-fab-bar">
+        <a class="md-button md-accent md-fab fab-footer" ng-click="navigateTo('app.emischeduledetail')" aria-label="Add">
+            <i class="ion-android-create"></i>
+        </a>
+    </div>-->
+    <!--end footer fab bar-->
+
+    </ion-content><!--end contract list section-->
+</ion-view>

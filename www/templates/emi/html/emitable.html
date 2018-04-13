@@ -1,0 +1,168 @@
+<!--View Information-->
+<!--View name : request new card page-->
+<!--Controller name : requestNewCardCtrl-->
+<!--Controller path : www/templates/cards/js/controllers.js-->
+<!--State name : app.requestNewCard-->
+<!--URL : #app/requestNewCard-->
+<ion-view title="Loan Amortization">
+   <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="navigateTo('app.menuDashboard')" class="button back-button buttons  button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons> <!--end left button on navigation bar-->
+
+    <!--contract detail section-->
+    <form name="contractForm">
+        <ion-content id="contract-details-content">
+           <div  class="md-block">
+                <md-autocomplete  flex required
+                    md-input-id="loanname"
+                    md-input-name="loanname"
+                    md-input-minlength="2"
+                    md-input-maxlength="15"
+                    md-selected-item="loanInfo.selectedItem"
+                    md-search-text="loanInfo.searchText"
+                    md-items="item in queryLoanSearch(loanInfo.searchText)"
+                    md-item-text="item.display"
+                    md-floating-label="Search for Loan"
+                    md-selected-item-change = "loanInfo.selectedLoanforEMI(item)"
+                    md-menu-class="autocomplete-custom-template">
+                <md-item-template>
+                    <span md-highlight-text="loanInfo.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                </md-item-template>
+                 <md-not-found>
+                    No states matching "{{loanInfo.searchText}}" were found.
+                </md-not-found>
+          
+                </md-autocomplete>
+             </div>
+            
+             <!--lise section-->
+        <md-list id="device-information-content" class="fade-in">
+            <!--<md-divider></md-divider>-->
+            <md-list-item class="row">
+                <div class="col-25 title">
+                    Borrower
+                </div>
+                <div class="col-25">
+                    :{{loanInfo.selectedRow.row.borrowername}}
+                </div>
+                <div class="col-25 title">
+                    No
+                </div>
+                <div class="col-25">
+                    :{{loanInfo.selectedRow.row.borrowerno}}
+                </div>
+            </md-list-item>
+            <!--<md-divider></md-divider>-->
+            <md-list-item class="row">
+                <div class="col-25 title">
+                    Loan
+                </div>
+                <div class="col-25">
+                    :{{loanInfo.selectedRow.row.loanamount}}
+                </div>
+                <div class="col-25 title">
+                    Interest
+                </div>
+                <div class="col-25">
+                     :{{loanInfo.selectedRow.row.interestrate}}
+                </div>
+            </md-list-item>
+            <!--<md-divider></md-divider>-->
+            <md-list-item class="row">
+                <div class="col-25 title">
+                    Tenure
+                </div>
+                <div class="col-25">
+                     :{{loanInfo.selectedRow.row.tenure}}
+                </div>
+                <div class="col-25 title">
+                    Loan Date
+                </div>
+                <div class="col-25">
+                     :{{loanInfo.selectedRow.row.sanctioneddate}}
+                </div>
+
+            </md-list-item>
+            <md-list-item class="row">
+                <div class="col-25 title">
+                    Due Amount
+                </div>
+                <div class="col-25">
+                     :{{loanInfo.selectedRow.row.installmentamount}}
+                </div>
+                <div class="col-25 title">
+                    Interest Amount
+                </div>
+                <div class="col-25">
+                     :{{loanInfo.selectedRow.row.interestamount}}
+                </div>
+
+            </md-list-item>
+            <!--<label><b>EMI Table</b></label>-->
+            <md-divider></md-divider>
+             <md-list-item class="row">
+                <div class="col-10 title">
+                    No
+                </div>
+                <div class="col-30 title">
+                    Opening Amount
+                </div>
+                <div class="col-10 title" style="display:none;">
+                    Principal
+                </div>
+                <div class="col-10 title" style="display:none;">
+                    Interest
+                </div>
+                <div class="col-10 title" style="display:none;">
+                    Due Amount
+                </div>
+                <div class="col-20 title">
+                    Due Date
+                </div>
+                <div class="col-30 title">
+                    Closing Amount
+                </div>
+                <div class="col-10 title">
+                    Paid
+                </div>
+
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item class="row" ng-repeat="emi in emitable">
+                <div class="col-10">
+                    {{emi.installmentno}}
+                </div>
+                 <div class="col-30">
+                    {{emi.openbalance}}
+                </div>
+                 <div class="col-10" style="display:none;">
+                    {{emi.principalamount}}
+                </div>
+                 <div class="col-10" style="display:none;">
+                    {{emi.interestamount}}
+                </div>
+                 <div class="col-10" style="display:none;">
+                    {{emi.installmentamount}}
+                </div>
+                <div class="col-20">
+                     {{emi.duedate}}
+                </div>
+                <div class="col-30">
+                    {{emi.closebalance}}
+                </div>
+                <div class="col-10">
+                    {{emi.ispaid}}
+                </div>
+
+            </md-list-item>
+            <md-divider></md-divider>
+            </md-list>
+        </ion-content>
+      
+    </form><!--end contract detail section-->
+
+   
+</ion-view>

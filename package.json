@@ -1,0 +1,89 @@
+{
+    "name": "Loan Maintenance",
+    "version": "1.0.0",
+    "description": "Loan Maintenance App",
+    "dependencies": {
+        "angular": "^1.5.0",
+        "angular-animate": "^1.5.0",
+        "angular-aria": "^1.5.0",
+        "angular-material": "^1.0.5",
+        "cordova-android": "^5.1.1",
+        "gulp": "^3.5.6",
+        "gulp-concat": "^2.2.0",
+        "gulp-minify-css": "^0.3.0",
+        "gulp-rename": "^1.2.0",
+        "gulp-sass": "^2.0.4"
+    },
+    "devDependencies": {
+        "bower": "^1.5.2",
+        "gulp": "^3.9.0",
+        "gulp-concat": "^2.6.0",
+        "gulp-sass": "^3.1.0",
+        "gulp-util": "^3.0.6",
+        "shelljs": "^0.3.0"
+    },
+    "cordovaPlugins": [
+        {
+            "locator": "https://github.com/floatinghotpot/cordova-plugin-admob.git",
+            "id": "cordova-plugin-admob"
+        },
+        {
+            "locator": "https://github.com/litehelpers/Cordova-sqlite-storage.git",
+            "id": "cordova-sqlite-storage"
+        },
+        {
+            "locator": "https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git",
+            "id": "cordova-plugin-x-socialsharing"
+        },
+        {
+            "locator": "https://github.com/cordova-sms/cordova-sms-plugin.git",
+            "id": "com.cordova.plugins.sms"
+        },
+        {
+            "locator": "https://github.com/katzer/cordova-plugin-email-composer.git",
+            "id": "de.appplant.cordova.plugin.email-composer"
+        },
+        {
+            "locator": "https://github.com/devgeeks/Canvas2ImagePlugin.git",
+            "id": "org.devgeeks.Canvas2ImagePlugin"
+        },
+        {
+            "locator": "https://github.com/wymsee/cordova-imagePicker.git",
+            "id": "com.synconset.imagepicker"
+        },
+        {
+            "locator": "https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git",
+            "id": "cordova-plugin-flashlight"
+        },
+        {
+            "locator": "https://github.com/katzer/cordova-plugin-local-notifications",
+            "id": "de.appplant.cordova.plugin.local-notification"
+        },
+        "cordova-plugin-contacts",
+        "cordova-plugin-camera",
+        "cordova-plugin-vibration",
+        "cordova-plugin-device",
+        "cordova-plugin-console",
+        "cordova-plugin-splashscreen",
+        "cordova-plugin-whitelist",
+        "cordova-plugin-transport-security",
+        "cordova-plugin-inappbrowser",
+        "com.ionic.keyboard",
+        "com.google.admobsdk",
+        "com.google.playservices",
+        "cordova-plugin-app-event"
+    ],
+    "cordovaPlatforms": [
+        "android",
+        {
+            "platform": "android",
+            "version": "",
+            "locator": "android"
+        }
+    ],
+    "cordova": {
+        "platforms": [
+            "android"
+        ]
+    }
+}

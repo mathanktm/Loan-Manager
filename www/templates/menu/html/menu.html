@@ -1,0 +1,126 @@
+<!--View Information-->
+<!--View name : Menu-->
+<!--Controller name : menuCtrl-->
+<!--Controller path : www/templates/menu/js/controllers.js-->
+<!--State name : app-->
+<!--URL : #app-->
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-balanced  material-background-nav-bar">
+            <!--<ion-nav-buttons side="left">
+                <a class="button button-icon button-clear ion-navicon" menu-toggle="left" ng-click="toggleLeft()"></a>
+            </ion-nav-buttons>-->
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+    <md-sidenav md-component-id="left">
+        <!--menu section-->
+        <div class="material-background" id="toggle-menu-left-header">
+            <!--menu header section-->
+            <div class="menu-left-header">
+                <img class="user-img" src="">
+
+                <p>
+                    <span class="title">Online EMI Maintenance</span>
+                    <br/>
+                    <span class="sub-title"></span>
+                </p>
+            </div><!--end menu header section-->
+        </div> <!--menu content section-->
+        <ion-content id="toggle-menu-left-content">
+
+            <!--If device is android application will present below code.-->
+            <!--It will disable animation to better performance on android.-->
+            <!--list section-->
+            <div ng-if="isAndroid" class="menu-list">
+                <md-subheader class="md-warn">Loan Maintenance</md-subheader>
+                <div class="row menu-item"  ng-click="navigateTo('app.newloan')">
+                    <div class="col-33">
+                        <i class="fa fa-database"></i>
+                    </div>
+                    <div class="col-66">
+                        <span>New Loan</span>
+                    </div>
+                </div>
+                <div class="row menu-item"  ng-click="navigateTo('app.preclosureloan')">
+                    <div class="col-33">
+                        <i class="fa fa-database"></i>
+                    </div>
+                    <div class="col-66">
+                        <span>Pre Closure Loan</span>
+                    </div>
+                </div>
+                <div class="row menu-item" ng-click="navigateTo('app.emischedule')">
+                    <div class="col-33">
+                        <i class="fa fa-cube"></i>
+                    </div>
+                    <div class="col-66">
+                        <span>EMI Schedule</span>
+                    </div>
+                </div>
+                <div class="row menu-item" ng-click="navigateTo('app.borrowers')">
+                    <div class="col-33">
+                        <i class="fa fa-cube"></i>
+                    </div>
+                    <div class="col-66">
+                        <span>Borrowers</span>
+                    </div>
+                </div>
+                <md-subheader class="md-warn">Account Maintenance</md-subheader>
+                <div class="row menu-item"  ng-click="navigateTo('app.password')">
+                    <div class="col-33">
+                        <i class="fa fa-wordpress"></i>
+                    </div>
+                    <div class="col-66">
+                        <span>Change Password</span>
+                    </div>
+                </div>
+                <div class="row menu-item"  ng-click="logout()">
+                    <div class="col-33">
+                        <i class="fa fa-facebook"></i>
+                    </div>
+                    <div class="col-66">
+                        <span>Logout</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--If device is not Android application will present below code.-->
+            <!--It will show animation when selecting row.-->
+            <md-list ng-if="!isAndroid">
+                <md-subheader class="md-warn">Loan Maintenance</md-subheader>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.newloan')">
+                    <i class="fa fa-database"></i>
+                    <span>New Loan</span>
+                </md-list-item>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.preclosureloan')">
+                    <i class="fa fa-cube"></i>
+                    <span>Pre Closure Loan</span>
+                </md-list-item>
+                  <md-list-item class="menu-list-item" ng-click="navigateTo('app.emischedule')">
+                    <i class="fa fa-cube"></i>
+                    <span>EMI Schedule</span>
+                </md-list-item>
+               
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.borrowers')">
+                    <i class="fa fa-database"></i>
+                    <span>Borrowers</span>
+                </md-list-item>
+                <md-subheader class="md-warn">Account Maintenance</md-subheader>
+                
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.password')">
+                    <i class="fa fa-facebook"></i>
+                    <span>Change Password</span>
+                </md-list-item>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.login')">
+                    <i class="fa fa-google-plus"></i>
+                    <span>Logout</span>
+                </md-list-item>
+            </md-list>
+            <!--end list section-->
+        </ion-content><!--end menu content section-->
+        <!--end menu section-->
+
+    </md-sidenav>
+</ion-side-menus>

@@ -1,0 +1,119 @@
+<!--View Information-->
+<!--View name : request new card page-->
+<!--Controller name : requestNewCardCtrl-->
+<!--Controller path : www/templates/cards/js/controllers.js-->
+<!--State name : app.requestNewCard-->
+<!--URL : #app/requestNewCard-->
+<ion-view title="Loan List">
+   <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="navigateTo('app.menuDashboard')" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons><!--end left button on navigation bar-->
+   <!--contract list section-->
+    <ion-content id="loan-list-content" class="">
+        <!--list section-->
+        <md-list>
+
+            <md-list-item>
+                <md-input-container md-no-float="" class="md-list-item-full-width">
+                    <input ng-model="filterText" placeholder="Search for Loan.">
+                </md-input-container>
+            </md-list-item>
+             
+    <!--footer fab bar-->
+    <!--<div class="footer-fab-bar">
+        <a class="md-button md-accent md-fab fab-footer" ng-click="navigateTo('app.newloandetail')" aria-label="Add">
+            <i class="ion-android-create"></i>
+        </a>
+    </div>-->
+    <!--end footer fab bar-->
+    <md-divider></md-divider>
+    <div class="row title">
+                <div class="col-10">
+                  No 
+                </div>
+                <div class="col-30">
+                    Borrower
+                </div>
+                 <div class="col-30">
+                    Loan Amount 
+                </div>
+                 <div class="col-5" style="display:none;">
+                    Tenure
+                </div>
+                 <div class="col-1" style="display:none;">
+                    Sanctioned Date
+                </div>
+                <div class="col-20">
+                    Status
+                </div>
+                 <div class="col-20" style="display:none;">
+                    Approved By
+                </div>
+                 <div class="col-10" style="display:none;">
+                    Last Change Date
+                </div>
+                <div class="col-10">
+                    E/D
+                </div>
+                 </div>
+                <md-divider></md-divider>
+            <!--Below code it will disable animation to better performance-->
+            <div ng-if="!isAnimated" class="row contract-list-item"
+                 ng-repeat="lnItem in loanInfo.loansList  | filter: filterText | orderBy: 'loanacctno'">
+                 <div class="col-10">
+                    {{lnItem.row.loanacctno }} 
+                </div>
+                <div class="col-30">
+                    {{ lnItem.row.borrowername }} 
+                </div>
+                 <div class="col-30">
+                    {{ lnItem.row.loanamount }} 
+                </div>
+                 <div class="col-10" style="display:none;">
+                    {{ lnItem.row.tenure }} 
+                </div>
+                 <div class="col-10" style="display:none;">
+                    {{ lnItem.row.sanctioneddate }} 
+                </div>
+                 <div class="col-20">
+                    {{ lnItem.row.status }} 
+                </div>
+                 <div class="col-20" style="display:none;">
+                    {{ lnItem.row.emailaddress }} 
+                </div>
+                 <div class="col-10" style="display:none;">
+                    {{ lnItem.row.lastchangedate }} 
+                </div>
+                <div class="col-10 status-button">
+                    <md-menu md-position-mode="target-right target" class="md-list-item-md-menu-right">
+                        <p ng-click="$mdOpenMenu()">
+                            <!--<md-icon md-menu-origin md-svg-icon="more"></md-icon>-->
+                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </p>
+                        <md-menu-content width="1">
+                            <md-menu-item>
+                                <a class="md-button md-default-theme" ng-click="navigateTo('app.newloandetail', lnItem.row)">
+                                    <span class="menu-item-button">Edit</span>
+                                </a>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <a class="md-button md-default-theme" ng-click="deleteLn(lnItem.row,$event)">
+                                    <span class="menu-item-button" >Delete</span>
+                                </a>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </div>
+                
+            </div>
+            <md-divider></md-divider>
+        </md-list>
+        <!--end list section-->
+        
+   
+
+    </ion-content><!--end contract list section-->
+</ion-view>

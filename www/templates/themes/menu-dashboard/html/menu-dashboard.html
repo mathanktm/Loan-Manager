@@ -1,0 +1,89 @@
+<!--View Information-->
+<!--View name : Menu Dashboard-->
+<!--Controller name : menuDashboardCtrl-->
+<!--Controller path : www/templates/themes/menu-dashboard/js/controllers.js-->
+<!--State name : app.menuDashboard-->
+<!--URL : #app/menuDashboard-->
+<ion-view title="Loan Maintenance">
+    <!--menu dashboard section-->
+    <ion-content id="menu-dashboard-content">
+        <!--panel section-->
+        <div class="menu-panel">
+            <div class="row">
+                <div class="col-33" ng-click="navigateTo('app.createloan')">
+                    <i class="fa fa-desktop"></i>
+
+                    <p>New Loan</p>
+                </div>
+                 <div class="col-33" ng-click="navigateTo('app.newloan')">
+                    <i class="fa fa-files-o"></i>
+
+                    <p>Loan List</p>
+                </div>
+                 <div class="col-33" ng-click="navigateTo('app.repayment')">
+                    <i class="fa fa-credit-card"></i>
+
+                    <p>Loan Repayment</p>
+                </div>
+               
+               
+            </div>
+
+          
+            <div class="row">
+                <div class="col-33" ng-click="navigateTo('app.preclosureloan')">
+                   <i class="fa fa-calendar-times-o" aria-hidden="true"></i>
+
+                    <p>Pre Closure Loan</p>
+                </div>
+                 <div class="col-33" ng-click="navigateTo('app.emischedule')">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+
+                    <p>EMI List</p>
+                </div>
+                <div class="col-33" ng-click="navigateTo('app.emitable')">
+                    <i class="fa fa-table" aria-hidden="true"></i>
+
+                    <p>Amortization</p>
+                </div>
+                </div>
+                <div class="row">
+               <div class="col-33" ng-click="navigateTo('app.borrowers')">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+
+                    <p>Borrowers</p>
+                </div>
+                 <div class="col-33" ng-click="navigateTo('app.expense')">
+                    <i class="fa fa-rupee" aria-hidden="true"></i>
+                    <p>Expense</p>
+                </div>
+                <div class="col-33" ng-click="sendSMS()">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <p>Send SMS</p>
+                </div>
+            </div>
+            <div class="row">
+              
+                <div class="col-33" ng-click="">
+                    <i class="fa fa-suitcase" aria-hidden="true"></i>
+                    <p>Balance Sheet</p>
+                </div>
+                <div class="col-33" ng-click="navigateTo('app.password')">
+                    <i class="fa fa-user-secret" aria-hidden="true"></i>
+
+                    <p>Change Password</p>
+                </div>
+                <div class="col-33" ng-click="logout()">
+                   <i class="fa fa-lock" aria-hidden="true"></i>
+
+                    <p>Logout</p>
+                </div>
+                <div class="col-33" ng-click="">
+                   <!--<i class="fa fa-lock" aria-hidden="true"></i>
+
+                    <p>Logout</p>-->
+                </div>
+            </div>
+        </div><!--end panel section-->
+    </ion-content><!--Menu dashboard section-->
+</ion-view>
